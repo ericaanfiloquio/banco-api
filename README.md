@@ -49,6 +49,7 @@ rules, status codes, and responses are working correctly.
 
 ## 📁 Project Structure
 
+```
 banco-api/
 │
 ├── test/                # Testes automatizados (Mocha + Supertest)
@@ -64,6 +65,8 @@ banco-api/
 ├── package-lock.json    # Controle de versões das dependências
 │
 └── README.md            # Documentação do projeto
+```
+
 
 ------------------------------------------------------------------------
 
