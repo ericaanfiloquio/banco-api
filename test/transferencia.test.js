@@ -1,11 +1,12 @@
 const request = require('supertest');
-const { expect } = require('chai')
+const { expect } = require('chai');
+require('dotenv').config()
 
 describe('Transferencias', () => {
     describe('POST /transferencias', () => {
         it('Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de 10 reais', async () => {
             // Capturar o token (fazer login)
-            const respostaLogin = await request('http://localhost:3000')
+            const respostaLogin = await request(process.env.BASE_URL)
                 .post('/login')
                 .set('Content-Type', 'application/json') //set é para colocar o header
                 .send({
@@ -15,7 +16,7 @@ describe('Transferencias', () => {
             
             const token = respostaLogin.body.token // essa resposta, estou jogando dentro da palavra token
             
-            const resposta = await request('http://localhost:3000')
+            const resposta = await request(process.env.BASE_URL)
                 .post('/transferencias')
                 .set('Content-Type', 'application/json')
                 .set('Authorization', `Bearer ${token}`) // ou 'Bearer ' + token, pra concatenar o tipo da auth com o token gerado ao fazer login
