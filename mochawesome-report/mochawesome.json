@@ -1,0 +1,215 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-04-19T02:07:38.443Z",
+    "end": "2026-04-19T02:07:38.549Z",
+    "duration": 106,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "fe2d9138-26f3-4aa0-ac51-5841f41c04a4",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cdee7107-61ab-47b6-8835-261bf4904fa6",
+          "title": "Login",
+          "fullFile": "C:\\projetos\\banco-api-tests\\test\\login.test.js",
+          "file": "\\test\\login.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "c60ad4cd-ffe6-46df-927d-0377e220ce88",
+              "title": "POST /login",
+              "fullFile": "C:\\projetos\\banco-api-tests\\test\\login.test.js",
+              "file": "\\test\\login.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Deve retornar 200 com um token quando usar credenciais validas",
+                  "fullTitle": "Login POST /login Deve retornar 200 com um token quando usar credenciais validas",
+                  "timedOut": false,
+                  "duration": 38,
+                  "state": "passed",
+                  "speed": "medium",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// console.log(process.env.BASE_URL)\nconst bodyLogin = { ...postLogin }\n\nconst resposta = await request(process.env.BASE_URL)\n    .post('/login')\n    .set('Content-Type', 'application/json') //set é para colocar o header\n    .send({\n        'username': 'julio.lima',\n        'senha': '123456'\n     })\n\nconsole.log(resposta.body)\nconsole.log(resposta.status)\nexpect(resposta.body.token).to.be.a('string');\nexpect(resposta.status).to.equal(200); //para ter acesso a um elemento dentro da resposta, usa essa sintax",
+                  "err": {},
+                  "uuid": "ff556ec3-7331-439b-8952-75ad40dd928d",
+                  "parentUUID": "c60ad4cd-ffe6-46df-927d-0377e220ce88",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "ff556ec3-7331-439b-8952-75ad40dd928d"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 38,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 200000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 200000
+        },
+        {
+          "uuid": "74e721c8-9a67-42b5-a9d9-8344acfa211e",
+          "title": "Transferencias",
+          "fullFile": "C:\\projetos\\banco-api-tests\\test\\transferencia.test.js",
+          "file": "\\test\\transferencia.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "c32e7e2b-8d9c-44ba-a532-0a3afd88c988",
+              "title": "POST /transferencias",
+              "fullFile": "C:\\projetos\\banco-api-tests\\test\\transferencia.test.js",
+              "file": "\\test\\transferencia.test.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before each\" hook in \"POST /transferencias\"",
+                  "fullTitle": "Transferencias POST /transferencias \"before each\" hook in \"POST /transferencias\"",
+                  "timedOut": false,
+                  "duration": 6,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "token = await obterToken('julio.lima', '123456')",
+                  "err": {},
+                  "uuid": "9c30c623-a71a-4b83-9749-ae7668715c51",
+                  "parentUUID": "c32e7e2b-8d9c-44ba-a532-0a3afd88c988",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de 10 reais",
+                  "fullTitle": "Transferencias POST /transferencias Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de 10 reais",
+                  "timedOut": false,
+                  "duration": 26,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const bodyTransferencias = { ...postTransferencias } // antes do body do reqst estava dentro de send, agora está em fixtures\nconst resposta = await request(process.env.BASE_URL)\n    .post('/transferencias')\n    .set('Content-Type', 'application/json')\n    .set('Authorization', `Bearer ${token}`) // ou 'Bearer ' + token, pra concatenar o tipo da auth com o token gerado ao fazer login\n    .send(bodyTransferencias)\nexpect(resposta.status).to.equal(201); \nconsole.log(resposta.body)",
+                  "err": {},
+                  "uuid": "ec0e2801-b7ba-486e-9ad3-847f1ac287e6",
+                  "parentUUID": "c32e7e2b-8d9c-44ba-a532-0a3afd88c988",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Deve retornar sucesso com 422 quando o valor da transferencia for abaixo de 10 reais",
+                  "fullTitle": "Transferencias POST /transferencias Deve retornar sucesso com 422 quando o valor da transferencia for abaixo de 10 reais",
+                  "timedOut": false,
+                  "duration": 6,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const bodyTransferencias = { ...postTransferencias } // isso pra n precisar ficar repetindo todo o body da request. Pego os dados da pasta fixtures\n            bodyTransferencias.valor = 7\n\n            const resposta = await request('http://localhost:3000')\n  .post('/transferencias')\n  .set('Content-Type', 'application/json')\n  .set('Authorization', `Bearer ${token}`) // ou 'Bearer ' + token, pra concatenar o tipo da auth com o token gerado ao fazer login\n  .send(bodyTransferencias)\n\n            expect(resposta.status).to.equal(422); \n\n            console.log(resposta.body)",
+                  "err": {},
+                  "uuid": "f0758020-f2a9-4dcb-8bb9-db5f270d3220",
+                  "parentUUID": "c32e7e2b-8d9c-44ba-a532-0a3afd88c988",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "ec0e2801-b7ba-486e-9ad3-847f1ac287e6",
+                "f0758020-f2a9-4dcb-8bb9-db5f270d3220"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 32,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 200000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 200000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 200000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.5"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}

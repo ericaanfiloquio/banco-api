@@ -1,10 +1,16 @@
 const request = require('supertest');
-const { expect } = require('chai')
+const { expect } = require('chai');
+require('dotenv').config()
+const postLogin = require('../fixtures/postLogin.json')
+
 
 describe('Login', () => { // função anônima: não coloca nada no parênteses
     describe('POST /login', () => {
         it('Deve retornar 200 com um token quando usar credenciais validas', async () => {
-            const resposta = await request('http://localhost:3000')
+            // console.log(process.env.BASE_URL)
+            const bodyLogin = { ...postLogin }
+            
+            const resposta = await request(process.env.BASE_URL)
                 .post('/login')
                 .set('Content-Type', 'application/json') //set é para colocar o header
                 .send({
