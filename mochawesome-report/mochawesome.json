@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2026-04-19T01:38:56.086Z",
-    "end": "2026-04-19T01:38:56.238Z",
-    "duration": 152,
+    "start": "2026-04-19T01:48:33.007Z",
+    "end": "2026-04-19T01:48:33.229Z",
+    "duration": 222,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "9404c654-c308-400a-8d13-beff65ebc87d",
+      "uuid": "0b091726-dd73-4621-b29a-0404d98a2e75",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "7cc41315-0890-4ce5-9498-54f9592f11d5",
+          "uuid": "cfb79661-0ff4-42f4-a7dc-663edeb23cff",
           "title": "Login",
           "fullFile": "C:\\projetos\\banco-api-tests\\test\\login.test.js",
           "file": "\\test\\login.test.js",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "e56aaabd-f979-4aec-890f-1498df0819f8",
+              "uuid": "ea84fdf0-464f-4544-80af-0167eaf688ea",
               "title": "POST /login",
               "fullFile": "C:\\projetos\\banco-api-tests\\test\\login.test.js",
               "file": "\\test\\login.test.js",
@@ -47,29 +47,29 @@
                   "title": "Deve retornar 200 com um token quando usar credenciais validas",
                   "fullTitle": "Login POST /login Deve retornar 200 com um token quando usar credenciais validas",
                   "timedOut": false,
-                  "duration": 44,
+                  "duration": 129,
                   "state": "passed",
-                  "speed": "medium",
+                  "speed": "slow",
                   "pass": true,
                   "fail": false,
                   "pending": false,
                   "context": null,
                   "code": "// console.log(process.env.BASE_URL)\nconst resposta = await request(process.env.BASE_URL)\n    .post('/login')\n    .set('Content-Type', 'application/json') //set é para colocar o header\n    .send({\n        'username': 'julio.lima',\n        'senha': '123456'\n     })\n\nconsole.log(resposta.body)\nconsole.log(resposta.status)\nexpect(resposta.body.token).to.be.a('string');\nexpect(resposta.status).to.equal(200); //para ter acesso a um elemento dentro da resposta, usa essa sintax",
                   "err": {},
-                  "uuid": "bd443c7d-a5c8-4c22-82b6-4cba30cfc41e",
-                  "parentUUID": "e56aaabd-f979-4aec-890f-1498df0819f8",
+                  "uuid": "ca326e35-2ed1-45ba-8ebb-d68d0d5357fb",
+                  "parentUUID": "ea84fdf0-464f-4544-80af-0167eaf688ea",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "bd443c7d-a5c8-4c22-82b6-4cba30cfc41e"
+                "ca326e35-2ed1-45ba-8ebb-d68d0d5357fb"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 44,
+              "duration": 129,
               "root": false,
               "rootEmpty": false,
               "_timeout": 200000
@@ -85,7 +85,7 @@
           "_timeout": 200000
         },
         {
-          "uuid": "2386824a-ecb4-458b-bc95-ed62f537adba",
+          "uuid": "b9630dd6-3b29-4dae-af2f-68f75835c371",
           "title": "Transferencias",
           "fullFile": "C:\\projetos\\banco-api-tests\\test\\transferencia.test.js",
           "file": "\\test\\transferencia.test.js",
@@ -94,28 +94,47 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "6221f7f1-1582-4c8e-9d62-2e526997acb7",
+              "uuid": "516f612a-f683-42da-a7f0-69420f4b2dae",
               "title": "POST /transferencias",
               "fullFile": "C:\\projetos\\banco-api-tests\\test\\transferencia.test.js",
               "file": "\\test\\transferencia.test.js",
-              "beforeHooks": [],
+              "beforeHooks": [
+                {
+                  "title": "\"before each\" hook in \"POST /transferencias\"",
+                  "fullTitle": "Transferencias POST /transferencias \"before each\" hook in \"POST /transferencias\"",
+                  "timedOut": false,
+                  "duration": 8,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "token = await obterToken('julio.lima', '123456')",
+                  "err": {},
+                  "uuid": "ab13740a-eac3-485b-87cc-c68b7a0c6514",
+                  "parentUUID": "516f612a-f683-42da-a7f0-69420f4b2dae",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
               "afterHooks": [],
               "tests": [
                 {
                   "title": "Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de 10 reais",
                   "fullTitle": "Transferencias POST /transferencias Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de 10 reais",
                   "timedOut": false,
-                  "duration": 77,
+                  "duration": 30,
                   "state": "passed",
-                  "speed": "slow",
+                  "speed": "fast",
                   "pass": true,
                   "fail": false,
                   "pending": false,
                   "context": null,
-                  "code": "const token = await obterToken('julio.lima', '123456')\n\nconst resposta = await request(process.env.BASE_URL)\n    .post('/transferencias')\n    .set('Content-Type', 'application/json')\n    .set('Authorization', `Bearer ${token}`) // ou 'Bearer ' + token, pra concatenar o tipo da auth com o token gerado ao fazer login\n    .send({\n    contaOrigem: 1,\n    contaDestino: 2,\n    valor: 20,\n    token: \"\"\n    })\nexpect(resposta.status).to.equal(201); \nconsole.log(resposta.body)",
+                  "code": "const resposta = await request(process.env.BASE_URL)\n               .post('/transferencias')\n               .set('Content-Type', 'application/json')\n               .set('Authorization', `Bearer ${token}`) // ou 'Bearer ' + token, pra concatenar o tipo da auth com o token gerado ao fazer login\n               .send({\n               contaOrigem: 1,\n               contaDestino: 2,\n               valor: 20,\n               token: \"\"\n               })\n           expect(resposta.status).to.equal(201); \n           console.log(resposta.body)",
                   "err": {},
-                  "uuid": "ed64bcc9-a7e8-45f8-b545-5ef5a5f647ba",
-                  "parentUUID": "6221f7f1-1582-4c8e-9d62-2e526997acb7",
+                  "uuid": "3a9bd8e6-abec-463a-9540-f0eec9529e1a",
+                  "parentUUID": "516f612a-f683-42da-a7f0-69420f4b2dae",
                   "isHook": false,
                   "skipped": false
                 },
@@ -123,30 +142,30 @@
                   "title": "Deve retornar sucesso com 422 quando o valor da transferencia for abaixo de 10 reais",
                   "fullTitle": "Transferencias POST /transferencias Deve retornar sucesso com 422 quando o valor da transferencia for abaixo de 10 reais",
                   "timedOut": false,
-                  "duration": 12,
+                  "duration": 6,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
                   "fail": false,
                   "pending": false,
                   "context": null,
-                  "code": "const token = await obterToken('julio.lima', '123456')\n\nconst resposta = await request('http://localhost:3000')\n    .post('/transferencias')\n    .set('Content-Type', 'application/json')\n    .set('Authorization', `Bearer ${token}`) // ou 'Bearer ' + token, pra concatenar o tipo da auth com o token gerado ao fazer login\n    .send({\n    contaOrigem: 1,\n    contaDestino: 2,\n    valor: 7,\n    token: \"\"\n    })\nexpect(resposta.status).to.equal(422); \nconsole.log(resposta.body)",
+                  "code": "const resposta = await request('http://localhost:3000')\n  .post('/transferencias')\n  .set('Content-Type', 'application/json')\n  .set('Authorization', `Bearer ${token}`) // ou 'Bearer ' + token, pra concatenar o tipo da auth com o token gerado ao fazer login\n  .send({\n  contaOrigem: 1,\n  contaDestino: 2,\n  valor: 7,\n  token: \"\"\n  })\n\n            expect(resposta.status).to.equal(422); \n\n            console.log(resposta.body)",
                   "err": {},
-                  "uuid": "7149daba-c248-43b6-be22-fbf209a72aba",
-                  "parentUUID": "6221f7f1-1582-4c8e-9d62-2e526997acb7",
+                  "uuid": "75822c65-6edc-4aae-a430-443bc3f27626",
+                  "parentUUID": "516f612a-f683-42da-a7f0-69420f4b2dae",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "ed64bcc9-a7e8-45f8-b545-5ef5a5f647ba",
-                "7149daba-c248-43b6-be22-fbf209a72aba"
+                "3a9bd8e6-abec-463a-9540-f0eec9529e1a",
+                "75822c65-6edc-4aae-a430-443bc3f27626"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 89,
+              "duration": 36,
               "root": false,
               "rootEmpty": false,
               "_timeout": 200000
